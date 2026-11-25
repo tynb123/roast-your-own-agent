@@ -7,6 +7,8 @@ def main():
         raise SystemExit("roast must not be blank")
     if len(ROAST) > 200:
         raise SystemExit("roast must be at most 200 characters")
+    if "\n" in ROAST or "\r" in ROAST:
+        raise SystemExit("roast must be a single line")
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
